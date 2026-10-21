@@ -1,5 +1,5 @@
 {
-  "name": "oc-ui",
+  "name": "@seblau02/oc-ui",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,5 +15,12 @@
     "react-dom": "^19.3.1",
     "vite": "^8.3.5",
     "vite-plugin-dts": "^5.1.2"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ton-pseudo/OC-UI.git"
   }
 }
