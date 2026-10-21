@@ -1,8 +1,7 @@
 {
   "name": "@seblau02/oc-ui",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "build": "vite build"
   },
@@ -22,5 +21,15 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ton-pseudo/OC-UI.git"
+  },
+  "main": "./dist/oc-ui.umd.js",
+  "module": "./dist/oc-ui.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/oc-ui.mjs",
+      "require": "./dist/oc-ui.umd.js"
+    },
+    "./dist/oc-ui.css": "./dist/oc-ui.css"
   }
 }
