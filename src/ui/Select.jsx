@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import Button from "../Button/Button";
-import Chevron from "../../icons/chevron/chevron";
+import Button from "./Button";
+import Chevron from "../../../HRNet/src/components/icons/chevron/chevron";
 
 function Select({ label = "", options, value, onChange, style, ...props }) {
   const { labelProps, menuProps } = props;

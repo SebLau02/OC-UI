@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import Input from "../Input/Input";
-import Select from "../Select/Select";
-import Chevron from "../../icons/chevron/chevron";
-import IconButton from "../IconButton/IconButton";
+import Input from "./Input";
+import Select from "./Select";
+import IconButton from "./IconButton";
+import Chevron from "../../../HRNet/src/components/icons/chevron/chevron";
 
 const getLitteralMonth = (integerMonth) => {
   const date = new Date(2026, integerMonth, 0);
