@@ -4,6 +4,9 @@ import DatePicker from "./ui/DatePicker";
 import Input from "./ui/Input";
 import Select from "./ui/Select";
 import Modal from "./ui/Modal";
+import TableContainer from "./ui/TableContainer";
+import TableRow from "./ui/TableRow";
+import TableCell from "./ui/TableCell";
 
 import { createTheme } from "./theme/createTheme";
 import ThemeProvider from "./theme/ThemeProvider";
@@ -17,4 +20,7 @@ export {
   Modal,
   createTheme,
   ThemeProvider,
+  TableContainer,
+  TableRow,
+  TableCell,
 };
