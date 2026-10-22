@@ -1,3 +1,4 @@
+(function(){try{if(typeof document<`u`){var e=document.createElement(`style`);e.appendChild(document.createTextNode(`.Button-Base{border:1px solid var(--oc-primary800);border-radius:.25rem;transition:filter .1s ease-out}.Button-Base:hover{filter:brightness(.9)}.Button-Base:active{filter:brightness()}.Button-Base:disabled{filter:unset}.Input-Base{border:1px solid var(--border);border-radius:.25rem;padding:.5rem}.Input-Base:focus{outline:2px solid var(--border-focus)}/*$vite$:1*/`)),document.head.appendChild(e)}}catch(e){console.error(`vite-plugin-css-injected-by-js`,e)}})();
 import { Fragment as e, jsx as t, jsxs as n } from "react/jsx-runtime";
 import { useEffect as r, useRef as i, useState as a } from "react";
 // src/ui/Button.jsx
