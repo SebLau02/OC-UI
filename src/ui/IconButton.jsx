@@ -12,6 +12,13 @@ const buttonProps = {
         borderColor: "var(--oc-primary800)",
       },
     },
+    text: {
+      style: {
+        backgroundColor: "inherit",
+        borderColor: "inherit",
+        borderWidth: 0,
+      },
+    },
   },
 };
 
