@@ -43,8 +43,8 @@ var c = { variant: {
 		borderColor: "var(--oc-primary800)"
 	} },
 	text: { style: {
-		backgroundColor: "unset",
-		borderColor: "unset",
+		backgroundColor: "inherit",
+		borderColor: "inherit",
 		borderWidth: 0
 	} }
 } };
@@ -409,11 +409,12 @@ function b({ className: e, ...r }) {
 	});
 }
 // src/ui/TableCell.jsx
-function x({ children: e, style: r, className: i, sortable: a = !1 }) {
-	return a ? /* @__PURE__ */ n("div", {
+function x({ children: e, style: r, className: i, sortable: o = !1, onSort: s }) {
+	let [c, u] = a("up");
+	return o ? /* @__PURE__ */ n("div", {
 		className: `OC-TableCell ${i}`,
 		style: {
-			padding: "0.8rem 0rem 0.8rem 1rem",
+			padding: "0.8rem 0.5rem 0.8rem 1rem",
 			display: "flex",
 			alignItems: "center",
 			justifyContent: "space-between",
@@ -421,7 +422,10 @@ function x({ children: e, style: r, className: i, sortable: a = !1 }) {
 		},
 		children: [e, /* @__PURE__ */ t(l, {
 			variant: "text",
-			children: /* @__PURE__ */ t(b, {})
+			onClick: () => {
+				s(c), u((e) => e === "up" ? "down" : "up");
+			},
+			children: /* @__PURE__ */ t(b, { style: { rotate: c === "up" ? "" : "180deg" } })
 		})]
 	}) : /* @__PURE__ */ t("div", {
 		className: `OC-TableCell ${i}`,
