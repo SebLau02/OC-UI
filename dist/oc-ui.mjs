@@ -43,7 +43,7 @@ var c = { variant: {
 		borderColor: "var(--oc-primary800)"
 	} },
 	text: { style: {
-		backgroundColor: "inherit",
+		backgroundColor: "var(--oc-light)",
 		borderColor: "inherit",
 		borderWidth: 0
 	} }
@@ -375,11 +375,11 @@ function _({ style: e, children: n, open: r, onClose: i, ...a }) {
 	});
 }
 // src/ui/TableContainer.jsx
-function v({ children: e, style: n }) {
-	return /* @__PURE__ */ t("div", {
-		style: { ...n },
+function v({ children: e, style: r, paginationSummary: i }) {
+	return /* @__PURE__ */ n("div", { children: [/* @__PURE__ */ t("div", {
+		style: { ...r },
 		children: e
-	});
+	}), i] });
 }
 // src/ui/TableRow.jsx
 function y({ children: e, style: n }) {
