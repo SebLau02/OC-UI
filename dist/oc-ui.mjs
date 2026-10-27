@@ -495,8 +495,9 @@ function C({ style: e, totalCount: r, page: i, perPage: a = 5, totalPages: o, se
 			/* @__PURE__ */ n("p", { children: [
 				p,
 				" - ",
-				d,
-				" of ",
+				d > r ? r : d,
+				" ",
+				"of ",
 				r
 			] }),
 			/* @__PURE__ */ t(f, {

@@ -44,7 +44,8 @@ function PaginationSummary({
       }}
     >
       <p>
-        {firstElement} - {lastElement} of {totalCount}
+        {firstElement} - {lastElement > totalCount ? totalCount : lastElement}{" "}
+        of {totalCount}
       </p>
       <Select
         options={perPageOptions}
