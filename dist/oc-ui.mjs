@@ -376,10 +376,20 @@ function _({ style: e, children: n, open: r, onClose: i, ...a }) {
 }
 // src/ui/TableContainer.jsx
 function v({ children: e, style: r, paginationSummary: i }) {
-	return /* @__PURE__ */ n("div", { children: [/* @__PURE__ */ t("div", {
-		style: { ...r },
-		children: e
-	}), i] });
+	return /* @__PURE__ */ n("div", {
+		style: {
+			width: "100%",
+			border: "1px solid var(--oc-grey200)"
+		},
+		children: [/* @__PURE__ */ t("div", {
+			style: {
+				overflow: "auto",
+				scrollbarWidth: "thin",
+				...r
+			},
+			children: e
+		}), i]
+	});
 }
 // src/ui/TableRow.jsx
 function y({ children: e, style: n }) {
@@ -410,7 +420,7 @@ function b({ className: e, ...r }) {
 }
 // src/ui/TableCell.jsx
 function x({ children: e, style: r, className: i, sortable: o = !1, onSort: s }) {
-	let [c, u] = a("up");
+	let [c, u] = a("down");
 	return o ? /* @__PURE__ */ n("div", {
 		className: `OC-TableCell ${i}`,
 		style: {
@@ -425,6 +435,7 @@ function x({ children: e, style: r, className: i, sortable: o = !1, onSort: s })
 			onClick: () => {
 				s(c), u((e) => e === "up" ? "down" : "up");
 			},
+			style: { backgroundColor: "inherit" },
 			children: /* @__PURE__ */ t(b, { style: { rotate: c === "up" ? "" : "180deg" } })
 		})]
 	}) : /* @__PURE__ */ t("div", {
@@ -436,13 +447,90 @@ function x({ children: e, style: r, className: i, sortable: o = !1, onSort: s })
 		children: e
 	});
 }
+// src/ui/chevron.jsx
+function S({ className: n, ...r }) {
+	return /* @__PURE__ */ t(e, { children: /* @__PURE__ */ t("svg", {
+		...r,
+		width: "16",
+		height: "16",
+		viewBox: "0 0 24 24",
+		fill: "none",
+		stroke: "currentColor",
+		strokeWidth: "2",
+		strokeLinecap: "round",
+		strokeLinejoin: "round",
+		className: `lucide lucide-chevron-up preview-icon ${n || ""}`,
+		children: /* @__PURE__ */ t("path", { d: "m18 15-6-6-6 6" })
+	}) });
+}
+// src/ui/PaginationSummary.jsx
+function C({ style: e, totalCount: r, page: i, perPage: a = 5, totalPages: o, setPage: s, setPerPage: c, perPageOptions: u }) {
+	let d = a * i, p = d - a + 1, m = u ?? [
+		{
+			label: "5",
+			value: 5
+		},
+		{
+			label: "10",
+			value: 10
+		},
+		{
+			label: "20",
+			value: 20
+		}
+	];
+	return /* @__PURE__ */ n("div", {
+		style: {
+			position: "sticky",
+			left: 0,
+			display: "flex",
+			alignItems: "center",
+			padding: "1rem",
+			justifyContent: "end",
+			gap: "2rem",
+			borderTop: "1px solid var(--oc-grey200)",
+			...e
+		},
+		children: [
+			/* @__PURE__ */ n("p", { children: [
+				p,
+				" - ",
+				d,
+				" of ",
+				r
+			] }),
+			/* @__PURE__ */ t(f, {
+				options: m,
+				value: a,
+				onChange: (e) => c(e.target.value)
+			}),
+			/* @__PURE__ */ n("div", {
+				style: {
+					display: "flex",
+					gap: "0.1rem"
+				},
+				children: [/* @__PURE__ */ t(l, {
+					variant: "text",
+					onClick: () => s(i - 1),
+					disabled: i === 1,
+					children: /* @__PURE__ */ t(S, { style: { rotate: "-90deg" } })
+				}), /* @__PURE__ */ t(l, {
+					variant: "text",
+					onClick: () => s(i + 1),
+					disabled: i === o,
+					children: /* @__PURE__ */ t(S, { style: { rotate: "90deg" } })
+				})]
+			})
+		]
+	});
+}
 // src/theme/createTheme.js
-var S = (e) => {
+var w = (e) => {
 	let { palette: t, ...n } = e;
 	return {
 		palette: {
-			...C(I(e.palette.primary), "primary"),
-			...C(I(e.palette.grey), "grey"),
+			...T(R(e.palette.primary), "primary"),
+			...T(R(e.palette.grey), "grey"),
 			primary: "#5c7d0e",
 			dark: "#1d2b3a",
 			dark800: "#3b4a5a",
@@ -459,12 +547,12 @@ var S = (e) => {
 		radius: "8px",
 		...n
 	};
-}, C = (e, t) => {
+}, T = (e, t) => {
 	let n = {};
 	return Object.entries(e).map(([e, r]) => {
 		n[`${t}${e}`] = r;
 	}), n;
-}, w = {
+}, E = {
 	100: 3 ** (1 / 5),
 	200: 3 ** (2 / 5),
 	300: 3 ** (3 / 5),
@@ -474,50 +562,50 @@ var S = (e) => {
 	700: 7,
 	800: 7 / 4.5 * 7,
 	900: 7 * (7 / 4.5) ** 2
-}, T = (e) => e <= .04045 ? e / 12.92 : ((e + .055) / 1.055) ** 2.4, E = (e) => e <= .0031308 ? 12.92 * e : 1.055 * e ** (1 / 2.4) - .055, D = (e) => {
+}, D = (e) => e <= .04045 ? e / 12.92 : ((e + .055) / 1.055) ** 2.4, O = (e) => e <= .0031308 ? 12.92 * e : 1.055 * e ** (1 / 2.4) - .055, k = (e) => {
 	let t = e.replace("#", "");
 	t.length === 3 && (t = [...t].map((e) => e + e).join(""));
 	let [n, r, i] = [
 		0,
 		2,
 		4
-	].map((e) => T(parseInt(t.slice(e, e + 2), 16) / 255)), a = Math.cbrt(.4122214708 * n + .5363325363 * r + .0514459929 * i), o = Math.cbrt(.2119034982 * n + .6806995451 * r + .1073969566 * i), s = Math.cbrt(.0883024619 * n + .2817188376 * r + .6299787005 * i), c = .2104542553 * a + .793617785 * o - .0040720468 * s, l = 1.9779984951 * a - 2.428592205 * o + .4505937099 * s, u = .0259040371 * a + .7827717662 * o - .808675766 * s;
+	].map((e) => D(parseInt(t.slice(e, e + 2), 16) / 255)), a = Math.cbrt(.4122214708 * n + .5363325363 * r + .0514459929 * i), o = Math.cbrt(.2119034982 * n + .6806995451 * r + .1073969566 * i), s = Math.cbrt(.0883024619 * n + .2817188376 * r + .6299787005 * i), c = .2104542553 * a + .793617785 * o - .0040720468 * s, l = 1.9779984951 * a - 2.428592205 * o + .4505937099 * s, u = .0259040371 * a + .7827717662 * o - .808675766 * s;
 	return [
 		c,
 		Math.hypot(l, u),
 		Math.atan2(u, l) * 180 / Math.PI
 	];
-}, O = (e, t, n) => {
+}, A = (e, t, n) => {
 	let r = t * Math.cos(n * Math.PI / 180), i = t * Math.sin(n * Math.PI / 180), a = (e + .3963377774 * r + .2158037573 * i) ** 3, o = (e - .1055613458 * r - .0638541728 * i) ** 3, s = (e - .0894841775 * r - 1.291485548 * i) ** 3;
 	return [
 		4.0767416621 * a - 3.3077115913 * o + .2309699292 * s,
 		-1.2684380046 * a + 2.6097574011 * o - .3413193965 * s,
 		-.0041960863 * a - .7034186147 * o + 1.707614701 * s
 	];
-}, k = (e) => e.every((e) => e >= -1e-4 && e <= 1.0001), A = (e, t, n) => {
-	if (k(O(e, t, n))) return O(e, t, n);
+}, j = (e) => e.every((e) => e >= -1e-4 && e <= 1.0001), M = (e, t, n) => {
+	if (j(A(e, t, n))) return A(e, t, n);
 	let r = 0, i = t;
 	for (let t = 0; t < 20; t++) {
 		let t = (r + i) / 2;
-		k(O(e, t, n)) ? r = t : i = t;
+		j(A(e, t, n)) ? r = t : i = t;
 	}
-	return O(e, r, n);
-}, j = ([e, t, n]) => .2126 * e + .7152 * t + .0722 * n, M = (e) => 1.05 / (j(e) + .05), N = (e) => e.map((e) => T(Math.round(Math.min(1, Math.max(0, E(e))) * 255) / 255)), P = (e) => "#" + e.map((e) => Math.round(Math.min(1, Math.max(0, E(e))) * 255).toString(16).padStart(2, "0")).join(""), F = (e, t, n) => {
+	return A(e, r, n);
+}, N = ([e, t, n]) => .2126 * e + .7152 * t + .0722 * n, P = (e) => 1.05 / (N(e) + .05), F = (e) => e.map((e) => D(Math.round(Math.min(1, Math.max(0, O(e))) * 255) / 255)), I = (e) => "#" + e.map((e) => Math.round(Math.min(1, Math.max(0, O(e))) * 255).toString(16).padStart(2, "0")).join(""), L = (e, t, n) => {
 	let r = 0, i = 1;
 	for (let a = 0; a < 30; a++) {
 		let a = (r + i) / 2;
-		M(N(A(a, n(a), t))) > e ? r = a : i = a;
+		P(F(M(a, n(a), t))) > e ? r = a : i = a;
 	}
 	return {
 		L: r,
-		hex: P(A(r, n(r), t))
+		hex: I(M(r, n(r), t))
 	};
-}, I = (e) => {
-	let [, t, n] = D(e), r = F(w[500], n, () => t).L, i = F(w[700], n, () => t).L, a = (e) => e > r ? t * (1 - e) / (1 - r) : e < i ? t * e / i : t;
-	return Object.fromEntries(Object.entries(w).map(([e, t]) => [e, F(t, n, a).hex]));
+}, R = (e) => {
+	let [, t, n] = k(e), r = L(E[500], n, () => t).L, i = L(E[700], n, () => t).L, a = (e) => e > r ? t * (1 - e) / (1 - r) : e < i ? t * e / i : t;
+	return Object.fromEntries(Object.entries(E).map(([e, t]) => [e, L(t, n, a).hex]));
 };
 // src/theme/ThemeProvider.jsx
-function L({ theme: e, children: n }) {
+function z({ theme: e, children: n }) {
 	let r = {};
 	return Object.entries(e.palette).forEach(([e, t]) => {
 		r[`--oc-${e}`] = t;
@@ -529,4 +617,4 @@ function L({ theme: e, children: n }) {
 		children: n
 	});
 }
-export { s as Button, h as DatePicker, l as IconButton, u as Input, _ as Modal, f as Select, x as TableCell, v as TableContainer, y as TableRow, L as ThemeProvider, S as createTheme };
+export { s as Button, h as DatePicker, l as IconButton, u as Input, _ as Modal, C as PaginationSummary, f as Select, x as TableCell, v as TableContainer, y as TableRow, z as ThemeProvider, w as createTheme };

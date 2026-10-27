@@ -3,7 +3,7 @@ import Arrow from "./Arrow";
 import { useState } from "react";
 
 function TableCell({ children, style, className, sortable = false, onSort }) {
-  const [sortDirection, setSortDirection] = useState("up");
+  const [sortDirection, setSortDirection] = useState("down");
   if (sortable)
     return (
       <div
@@ -22,6 +22,9 @@ function TableCell({ children, style, className, sortable = false, onSort }) {
           onClick={() => {
             onSort(sortDirection);
             setSortDirection((prev) => (prev === "up" ? "down" : "up"));
+          }}
+          style={{
+            backgroundColor: "inherit",
           }}
         >
           <Arrow

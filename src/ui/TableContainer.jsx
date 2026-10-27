@@ -1,8 +1,15 @@
 function TableContainer({ children, style, paginationSummary }) {
   return (
-    <div>
+    <div
+      style={{
+        width: "100%",
+        border: "1px solid var(--oc-grey200)",
+      }}
+    >
       <div
         style={{
+          overflow: "auto",
+          scrollbarWidth: "thin",
           ...style,
         }}
       >
