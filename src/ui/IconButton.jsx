@@ -14,7 +14,7 @@ const buttonProps = {
     },
     text: {
       style: {
-        backgroundColor: "inherit",
+        backgroundColor: "var(--oc-light)",
         borderColor: "inherit",
         borderWidth: 0,
       },
