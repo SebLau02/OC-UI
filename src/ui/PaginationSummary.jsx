@@ -32,11 +32,14 @@ function PaginationSummary({
   return (
     <div
       style={{
+        position: "sticky",
+        left: 0,
         display: "flex",
         alignItems: "center",
         padding: "1rem",
         justifyContent: "end",
         gap: "2rem",
+        borderTop: "1px solid var(--oc-grey200)",
         ...style,
       }}
     >

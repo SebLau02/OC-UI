@@ -1,11 +1,14 @@
-function TableContainer({ children, style }) {
+function TableContainer({ children, style, paginationSummary }) {
   return (
-    <div
-      style={{
-        ...style,
-      }}
-    >
-      {children}
+    <div>
+      <div
+        style={{
+          ...style,
+        }}
+      >
+        {children}
+      </div>
+      {paginationSummary}
     </div>
   );
 }
