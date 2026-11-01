@@ -2,6 +2,13 @@
 
 Bibliothèque de composants React (boutons, champs, sélecteur, sélecteur de date, modale, tableau paginé) accompagnée d'un système de thème qui génère automatiquement une palette accessible (contrastes WCAG) à partir d'une couleur.
 
+## Prérequis
+
+- Node.js ≥ 20 (testé avec Node 22) et [pnpm](https://pnpm.io) (ou npm / yarn)
+- React et React DOM ≥ 19 dans le projet qui consomme la librairie
+- Un accès au registre GitHub Packages (voir ci-dessous)
+- Éditeur recommandé : [Visual Studio Code](https://code.visualstudio.com), qui affiche la documentation JSDoc des composants au survol
+
 ## Installation
 
 Le paquet est publié sur le registre GitHub Packages. Ajoutez dans votre `.npmrc` :
