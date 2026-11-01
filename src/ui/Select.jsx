@@ -1,7 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 import Button from "./Button";
-import Chevron from "../../../HRNet/src/components/icons/chevron/chevron";
+import Chevron from "./chevron";
 
+/**
+ * Liste déroulante personnalisée. Se ferme au clic extérieur.
+ *
+ * @param {object} props
+ * @param {{label: React.ReactNode, value: any, props?: object}[]} props.options Options ; `props` est transmis au bouton de l'option.
+ * @param {any} props.value Valeur sélectionnée (comparée à `option.value`).
+ * @param {(e: {target: {name: string, value: any}}) => void} [props.onChange] Reçoit la valeur choisie dans `e.target.value`.
+ * @param {string} [props.label] Libellé affiché au-dessus.
+ * @param {string} [props.name] Renvoyé dans `e.target.name`.
+ * @param {React.CSSProperties} [props.style] Style du conteneur.
+ * @param {object} [props.labelProps] Props du `<label>`.
+ * @param {object} [props.menuProps] Props du menu déroulant (`className`, `style`…).
+ *
+ * @example
+ * <Select label="Pays" name="country" options={[{label: "France", value: "fr"}]}
+ *   value={country} onChange={(e) => setCountry(e.target.value)} />
+ */
 function Select({
   label = "",
   options,
@@ -67,8 +84,8 @@ function Select({
             zIndex: 1,
             maxWidth: "100%",
             translate: "0 100%",
-            backgroundColor: "var(--light)",
-            border: "1px solid var(--border)",
+            backgroundColor: "var(--oc-light)",
+            border: "1px solid var(--oc-border)",
             maxHeight: "200px",
             scrollbarWidth: "thin",
             overflow: "auto",

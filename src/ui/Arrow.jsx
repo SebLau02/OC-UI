@@ -10,7 +10,7 @@ function Arrow({ className, ...props }) {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={`lucide lucide-move-up preview-icon${className || ""}`}
+      className={`lucide lucide-move-up preview-icon ${className || ""}`}
     >
       <path d="M8 6L12 2L16 6" />
       <path d="M12 2V22" />

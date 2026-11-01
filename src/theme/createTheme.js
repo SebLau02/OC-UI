@@ -1,3 +1,14 @@
+/**
+ * Construit le thème à passer à `ThemeProvider`. Génère `primary100…900` et `grey100…900`
+ * (paliers calibrés sur des ratios de contraste WCAG) et fusionne les valeurs par défaut.
+ *
+ * @param {object} theme
+ * @param {{primary: string, grey: string, [key: string]: string}} theme.palette Couleurs hex ; `primary` et `grey` sont obligatoires.
+ * @param {string} [theme.radius="8px"] Rayon de bordure.
+ *
+ * @example
+ * const theme = createTheme({ palette: { primary: "#5c7d0e", grey: "#5a6b7b" } });
+ */
 export const createTheme = (theme) => {
   const { palette, ...restTheme } = theme;
   return {
@@ -10,7 +21,7 @@ export const createTheme = (theme) => {
       secondary: "white",
       darkBlue: "#0f1e2e",
       light: "#f6f8f3",
-      grey: "5a6b7b",
+      grey: "#5a6b7b",
       backdrop: "rgba(0, 0, 0, 0.5)",
       borderLight: "#dde3e9",
       border: "#7d8b99",

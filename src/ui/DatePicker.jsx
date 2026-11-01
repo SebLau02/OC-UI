@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Input from "./Input";
 import Select from "./Select";
 import IconButton from "./IconButton";
-import Chevron from "../../../HRNet/src/components/icons/chevron/chevron";
+import Chevron from "./chevron";
 
 const getLitteralMonth = (integerMonth) => {
   const date = new Date(2026, integerMonth, 0);
@@ -28,6 +28,19 @@ const formatDate = (year, month, day) => {
   return Object.values(formatedDate).join("-");
 };
 
+/**
+ * Champ date avec calendrier déroulant (non contrôlé, mois en français, semaine commençant le lundi).
+ *
+ * @param {object} props
+ * @param {React.ReactNode} [props.label] Libellé au-dessus du champ.
+ * @param {object} [props.labelProps] Props du `<label>`.
+ * @param {string} [props.name] Nom du champ, renvoyé dans `e.target.name`.
+ * @param {(e: {target: {name: string, value: string}}) => void} [props.onChange]
+ *   Appelé au clic sur un jour ; `e.target.value` est au format `AAAA-MM-JJ`.
+ *
+ * @example
+ * <DatePicker label="Naissance" name="birthDate" onChange={(e) => setDate(e.target.value)} />
+ */
 function DatePicker({ labelProps, label, onChange, ...props }) {
   const [open, setOpen] = useState();
 
@@ -160,8 +173,8 @@ function DatePicker({ labelProps, label, onChange, ...props }) {
             right: 0,
             zIndex: 1,
             isolation: "isolate",
-            backgroundColor: "var(--light)",
-            border: "1px solid var(--border)",
+            backgroundColor: "var(--oc-light)",
+            border: "1px solid var(--oc-border)",
           }}
         >
           <div className="d-flex justify-space-between p-1">
@@ -170,13 +183,13 @@ function DatePicker({ labelProps, label, onChange, ...props }) {
                 options={allMonth}
                 value={month}
                 onChange={(e) => {
-                  setMonth(e);
+                  setMonth(e.target.value);
                   setSelected((prev) => {
                     return prev
-                      ? { ...prev, month: e }
+                      ? { ...prev, month: e.target.value }
                       : {
                           day: currentDayNumber,
-                          month: e,
+                          month: e.target.value,
                           year,
                         };
                   });
@@ -189,14 +202,14 @@ function DatePicker({ labelProps, label, onChange, ...props }) {
                 options={years}
                 value={year}
                 onChange={(e) => {
-                  setYear(e);
+                  setYear(e.target.value);
                   setSelected((prev) => {
                     return prev
-                      ? { ...prev, year: e }
+                      ? { ...prev, year: e.target.value }
                       : {
                           day: currentDayNumber,
                           month,
-                          year: e,
+                          year: e.target.value,
                         };
                   });
                 }}
