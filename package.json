@@ -1,6 +1,6 @@
 {
   "name": "@seblau02/oc-ui",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "",
   "scripts": {
     "build": "vite build"
@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/react": "^19.3.0",
     "@typescript/typescript6": "^6.0.2",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
@@ -21,16 +22,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ton-pseudo/OC-UI.git"
+    "url": "git+https://github.com/seblau02/OC-UI.git"
   },
   "main": "./dist/oc-ui.umd.js",
   "module": "./dist/oc-ui.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/oc-ui.mjs",
       "require": "./dist/oc-ui.umd.js"
     },
     "./dist/oc-ui.css": "./dist/oc-ui.css"
-  }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "docs"
+  ]
 }
